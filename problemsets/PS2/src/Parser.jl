@@ -2,7 +2,7 @@
     _recursive_compound_parser()
 
 TODO: Describe what this function does, the args and what we expect it to return
-Creates a compound dictionary, then stores the names as keys to dictionaries themselves
+Dequeues and stores data as needed to push it into the arrays
 """
 function _recursive_compound_parser(queue::Queue, element::Array{Char, 1}, number::Array{Int, 1})
     # TODO: Implement me
@@ -34,8 +34,8 @@ end
     recursive_compound_parser(compounds::Dict{String, MyChemicalCompoundModel}) -> Dict{String, MyChemicalCompoundModel}
 
 TODO: Describe what this function does, the args and what we expect it to return 
-
-HERE: use the catdog strategy to add 1's as needed. Could also edit the datafile to add those.
+creates the composition dictionary, element array, and number array. stores everything in the compounds dictionary.
+        
 """
 function recursive_compound_parser(compounds::Dict{String, MyChemicalCompoundModel})::Dict{String, MyChemicalCompoundModel}
 
