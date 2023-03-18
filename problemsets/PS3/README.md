@@ -2,7 +2,7 @@
 
 # Markdown Table - All three cases
 
-                     | C1            | C2            | C3    |
+        Categories   | C1            | C2            | C3    |
 :------------------: |:------------ :|:-------------:|:-----:|
 Det(A)               | Nonzero       | Nonzero       |Nonzero|
 Diagonally Dominant? | Yes           | Yes           | No    |
