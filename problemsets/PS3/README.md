@@ -5,6 +5,7 @@
         Categories   | C1            | C2            | C3    |
         
 :------------------: |:------------ :|:-------------:|:-----:|
+
 Det(A)               | Nonzero       | Nonzero       |Nonzero|
 Diagonally Dominant? | Yes           | Yes           | No    |
 Jacobi SN            | Yes           | Yes           | No    |
