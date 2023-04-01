@@ -7,6 +7,6 @@ path_to_data_file = joinpath(_PATH_TO_DATA,"Synthetic-Numerical-CoV-10K-Fibrinol
 
 # standardize the data -
 XS = standardize(X);
-
+k
 # decompose using SVD -
 F = svd(transpose(XS));
