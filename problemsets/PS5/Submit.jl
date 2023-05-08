@@ -13,5 +13,4 @@ mINV = inv(transpose(matrix)*matrix)*transpose(matrix)
 
 # Step 2: estimate the error model.
 errors = vector - matrix*β̂;
-ϵ = errormodel(errors)
-
+ϵ = build_error_distribution(errors)

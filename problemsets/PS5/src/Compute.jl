@@ -4,19 +4,33 @@
 TODO: Fill me in.
 """
 function build_data_matrix(data::DataFrame)::Array{Float64,2}
-    n = 100
-    m = 4
-    dm = zeros(n, m)
+   number_of_repeats = 3;
+    
+   (R,C) = size(data);
 
-    # Fill in the dynamic programming matrix
-    for i in 1:n  # this should avoid any errors
-        for j in 2:m
-            dm[i,j] = data[i,j] # 1-indexed
-        end
-    end
+   S_array = Array{Float64,1}();
+   for i ∈ 1:R
+       S_value = data[i,:S];
+       for j ∈ 1:number_of_repeats
+           push!(S_array,(1/S_value));
+       end
+   end
 
-    return dm
+   X = Array{Float64,2}(undef, number_of_repeats*R, 2);
+   for i ∈ 1:number_of_repeats:(number_of_repeats*R)
+       for j ∈ i:(i+number_of_repeats-1)
+           
+           # get the S level -
+           S_value = S_array[j];
+           
+           # fill in the columns of the data matrix -
+           X[j,1] = 1.0;
+           X[j,2] = S_value
+       end
+   end
 
+   # return -
+   return X
 end
 
 """
@@ -25,13 +39,19 @@ end
 TODO: Fill me in.
 """
 function build_output_vector(data::DataFrame)::Array{Float64,1}
-    n = 100
-    ov = zeros(n)
-    for i in 1:n
-        ov[i, 1] = data[i, 1]
+    number_of_repeats = 3;
+
+    (R,C) = size(data);
+
+    Y_array = Array{Float64,1}();
+    for i ∈ 1:R
+        for j ∈ 1:number_of_repeats
+            y_value = data[i,j+1];
+            push!(Y_array, (1/y_value));
+        end
     end
 
-    return ov
+    return Y_array;
 end
 
 """
@@ -41,9 +61,12 @@ Fill me in.
 """
 function build_error_distribution(residuals::Array{Float64,1})::Normal
 
+    μ = 0.0; # default value, replace with your value
+    σ = 0.0; # default value, replace with your value
+
     # initialize -
-    μ = mean(residuals); # default value, replace with your value
-    σ = std(residuals); # default value, replace with your value
+    μ = mean(residuals);
+    σ = std(residuals);
 
     # return -
     return Normal(μ, σ);
