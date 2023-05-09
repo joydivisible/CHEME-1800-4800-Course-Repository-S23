@@ -4,28 +4,28 @@
 TODO: Fill me in.
 """
 function build_data_matrix(data::DataFrame)::Array{Float64,2}
-   number_of_repeats = 3;
+   iterate = 3
     
-   (R,C) = size(data);
+   (R,C) = size(data)
 
-   S_array = Array{Float64,1}();
-   for i ∈ 1:R
-       S_value = data[i,:S];
-       for j ∈ 1:number_of_repeats
-           push!(S_array,(1/S_value));
+   matrixarray = Array{Float64,1}()
+   for i in 1:R
+       value = data[i,:S]
+       for j in 1:iterate
+           push!(matrixarray,(value))
        end
    end
 
-   X = Array{Float64,2}(undef, number_of_repeats*R, 2);
-   for i ∈ 1:number_of_repeats:(number_of_repeats*R)
-       for j ∈ i:(i+number_of_repeats-1)
+   X = Array{Float64,2}(undef, iterate*R, 2)
+   for i in 1:iterate:(iterate*R)
+       for j in i:(i+iterate-1)
            
            # get the S level -
-           S_value = S_array[j];
+           value = matrixarray[j]
            
            # fill in the columns of the data matrix -
-           X[j,1] = 1.0;
-           X[j,2] = S_value
+           X[j,1] = 1.0
+           X[j,2] = value
        end
    end
 
@@ -39,19 +39,19 @@ end
 TODO: Fill me in.
 """
 function build_output_vector(data::DataFrame)::Array{Float64,1}
-    number_of_repeats = 3;
+    iterate = 3
 
-    (R,C) = size(data);
+    (R,C) = size(data)
 
-    Y_array = Array{Float64,1}();
+    vectorarray = Array{Float64,1}()
     for i ∈ 1:R
-        for j ∈ 1:number_of_repeats
-            y_value = data[i,j+1];
-            push!(Y_array, (1/y_value));
+        for j ∈ 1:iterate
+            value = data[i,j+1];
+            push!(vectorarray, (1/value));
         end
     end
 
-    return Y_array;
+    return vectorarray;
 end
 
 """
