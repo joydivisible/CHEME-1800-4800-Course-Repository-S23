@@ -12,7 +12,7 @@ function build_data_matrix(data::DataFrame)::Array{Float64,2}
    for i in 1:R
        value = data[i,:S]
        for j in 1:iterate
-           push!(matrixarray,(value))
+           push!(matrixarray,(1/value))
        end
    end
 

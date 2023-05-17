@@ -27,15 +27,12 @@ for s ∈ 1:number_of_samples
     end
 end
 
-# mean of β̂[1] -
 μ_beta_1 = mean(simulated_parameter_values[:,1]);
 μ_beta_2 = mean(simulated_parameter_values[:,2]);
 
-# std of β̂[2] -
 σ_beta_1 = std(simulated_parameter_values[:,1]);
 σ_beta_2 = std(simulated_parameter_values[:,2]);
 
-# make a pretty_table -
 result_table_header = ["Parameters","Actual","μ","σ"]
 result_table = Array{Any,2}(undef, 2,4);
 result_table[1,1] = "β₁"
